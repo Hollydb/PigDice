@@ -11,6 +11,8 @@ function PigDice (players, score, round, playerTurn) {
 PigDice.prototype.turn = function(roll) {
   if (roll != 1){
   this.score.push(roll);
+} else {
+  game.score = []
 }
 }
 
@@ -28,12 +30,14 @@ function Player(endScore, playerID) {
 //   }
 pass = function(score) {
     for(i=0;i<score.length;i++){
+      game.score.splice(score[i],1);
       player1.endScore += score[i];
-      game.score.splice(score[i], 1);
       console.log (player1);
-    }
-  }
-
+}
+}
+  function reset (score){
+    game.score =[];
+}
   pass2 = function(score) {
       for(i=0;i<score.length;i++){
         player2.endScore += score[i];
@@ -81,6 +85,7 @@ $(document).ready(function() {
     // player1.pass(game.score);
     pass(game.score);
     $("#score1").text(player1.endScore);
+    reset(game.score);
 })
 
 //Player 2
@@ -100,5 +105,6 @@ console.log(player1);
 // player2.pass(game.score);
 pass2(game.score);
 $("#score2").text(player2.endScore);
+    reset(game.score);
 })
 })

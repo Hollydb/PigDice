@@ -18,9 +18,7 @@ PigDice.prototype.turn = function(roll) {
   }
 }
 
-// PigDice.prototype.round = function (round){
-//   this.round += 1;}
-//
+
   function whosturn (round) {
     if (round  % 2 === 0){
       $("#whosturn").text("Player 2 turn")
@@ -52,6 +50,15 @@ PigDice.prototype.turn = function(roll) {
     console.log(game.round);
   }
 
+  function win (score) {
+    if (player1.endScore > 99){
+      $("#winner").text("Player 1 Wins!!!")
+    } if (player2.endScore > 99){
+      $("#winner").text("Player 2 Wins!!!")
+    }
+
+  }
+
   var game = new PigDice();
   var player1 = new Player(0, "player1");
   var player2 = new Player(0, "player2");
@@ -72,6 +79,7 @@ PigDice.prototype.turn = function(roll) {
       $("#score1").text(player1.endScore);
       reset(game.score);
       whosturn(game.round);
+      win(player1.endScore, player2.endScore);
       console.log(player1);
       console.log(player2);
       console.log ("this is the game round" + game.round);

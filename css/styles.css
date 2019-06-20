@@ -1,0 +1,7 @@
+#playerdisplay {
+  #whosturnone: display:hide;
+}
+
+#whosturntwo{
+  display:none;
+}

@@ -2,6 +2,12 @@ function roll (){
   return Math.floor((Math.random() * 6) + 1);
 };
 
+// function oneRule (playerRoll) {
+//   if (playerRoll === 1) {
+//
+//   }
+// }
+
 
 function PigDice (players, score, round) {
   this.player=players,
@@ -13,13 +19,22 @@ PigDice.prototype.turn = function(roll) {
   if (roll != 1){
   this.score.push(roll);
 } else {
-  this.round += 1;
   game.score = [];
+  game.round =+ 1;
+  console.log(game.round);
 }
 }
 
 PigDice.prototype.round = function (round){
   this.round += 1;}
+
+function whosturn (round) {
+  if (round  % 2 === 0){
+    $("#whosturn").text("Player 2 turn")
+  } if(round % 2 === 1){
+    $("#whosturn").text("Player 1 turn")
+}
+}
 
 
 
@@ -39,10 +54,10 @@ pass = function(score) {
     for(i=0;i<score.length;i++){
       if (game.round % 2 === 0) {
         player2.endScore += score[i];
-        $("#whoturn").text("Player 1 turn");
+        // $("#whosturn").text("Player 1 turn");
       } else {
       player1.endScore += score[i];
-      $("#whoturn").text("Player 2 turn");
+      // $("#whosturn").text("Player 2 turn");
 }
 }
 }
@@ -82,19 +97,20 @@ $(document).ready(function() {
     $("button#roll").click(function(event){
     event.preventDefault();
     var playerroll = roll()
-    $("#player1").text(playerroll);
+    $("#currentroll").text(playerroll);
     game.turn(playerroll);
     var gameScore = game.score;
+    whosturn(game.round);
   })
   $("button#pass").click(function(event){
     event.preventDefault();
-
     // player1.pass(game.score);
     pass(game.score);
     $("#score2").text(player2.endScore);
     $("#score1").text(player1.endScore);
 
     reset(game.score);
+    whosturn(game.round);
     console.log(player1);
     console.log(player2);
     console.log ("this is the game round" + game.round);

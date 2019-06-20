@@ -11,15 +11,19 @@
     <div class="container">
       <div class="row">
   <div class="col-sm-6">
-    <h3>Player One</h3>
+    <h3 id="whoturn">Player 1</h3>
+
       <form id="gameButton">
       <div class="play">
       <div id ="rollDisplay"></div>
       <br>
       <button id="roll" type="submit" name="button" >Roll!</button>
-      <button id="pass" type="submit" name="button">End Turn</button>
+      <button id="pass" type="submit" name="button">Hold</button>
+
       <p> Your Current Roll: <span id="player1"></span></p>
-      <p> Your Score: <span id="score1"></span></p>
+
+      <p> Player 1 Score: <span id="score1"></span></p>
+      <p> Player 2 Score: <span id="score2"></span></p>
     </form>
   </div>
 </div>
@@ -33,7 +37,7 @@
   <button id="roll2" type="submit" name="button" >Roll!</button>
   <button id="pass2" type="submit" name="button">End Turn</button>
   <p> Your Current Roll: <span id="player2"></span></p>
-  <p> Your Score: <span id="score2"></span></p>
+
 </form>
 </div>
 </div>
